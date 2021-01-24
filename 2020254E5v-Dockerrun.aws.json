@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "website",
+      "image": "659821968821.dkr.ecr.ap-southeast-1.amazonaws.com/enres-website:stag-co",
+      "hostname": "website",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "659821968821.dkr.ecr.ap-southeast-1.amazonaws.com/enres-website:nginx-v1",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["website"],
+      "memory": 128
+    }
+  ]
+}
